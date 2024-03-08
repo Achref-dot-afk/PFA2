@@ -1,0 +1,17 @@
+{
+  "name": "pfa2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client":"cd ./Ecopact-Frontend && npm run dev",
+    "server":"cd ./Ecopact-Backend && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
