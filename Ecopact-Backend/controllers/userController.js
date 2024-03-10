@@ -25,7 +25,7 @@ const deleteUser = asyncHandler(async(req,res)=>{
 -----------------------------*/
 const updateUser = asyncHandler(async(req, res) => {
     const {error}=validateUpdateUser(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+    //if(error) return res.status(400).send(error.details[0].message); Solve default input values
     const userId = req.params.id;
     const newUser = req.body;
     const user=await User.findById(userId);
@@ -43,8 +43,17 @@ const updateUser = asyncHandler(async(req, res) => {
 });
 
 const getUsers = asyncHandler(async(req,res)=>{
-    const users = await User.find({});
+    const users = await User.find({},{ password: 0 });
     if(!users) return res.status(404).send('No user found');
-    return res.status(200).json({users: users});
+    return res.status(200).json({users: users});                
 })
-module.exports={deleteUser,updateUser,getUsers};
+const getOneUser = asyncHandler(async(req,res)=>{
+    const id = req.params.id;
+    const user = await User.findOne(
+        { _id: id }, 
+        { password: 0}  
+      );    
+    if(!user) return res.status(404).send('No user found');
+    return res.status(200).json({user: user});
+})
+module.exports={deleteUser,updateUser,getUsers,getOneUser};

@@ -84,3 +84,15 @@ body{
 .top{
   background-color: rgb(16 22 36);
 }
+.bo{
+  height: calc(100vh - 80px);
+}
+.btns{
+  margin: 0 auto;
+}
+.for{
+  margin: 30px auto;
+}
+#fname,#lname,#email,#phone,#password{
+  outline: none;
+}

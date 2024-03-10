@@ -1,2 +1,3 @@
-complete crud user(update user , delete user , show user)
-handle admin roles 
+complete crud user(update user)
+complete crud interfaces(update user && show user)
+redux for collapce state

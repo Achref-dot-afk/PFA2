@@ -1,6 +1,6 @@
 const express=require('express');
 const { verifyToken, verifyTokenForOnlyUser, verifyTokenForOnlyUserOrAdmin } = require('../middlewares/verifyToken');
-const { deleteUser, updateUser, getUsers } = require('../controllers/userController');
+const { deleteUser, updateUser, getUsers, getOneUser } = require('../controllers/userController');
 const { validateId } = require('../middlewares/verifyId');
 
 const userRoutes=express.Router();
@@ -14,5 +14,6 @@ userRoutes.delete('/:id',validateId,verifyTokenForOnlyUserOrAdmin,deleteUser)
 userRoutes.put('/:id',validateId,verifyTokenForOnlyUser,updateUser)
 // get users route
 userRoutes.get('/',getUsers);
+userRoutes.get('/:id',getOneUser);
 
 module.exports={userRoutes}

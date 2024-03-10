@@ -27,7 +27,7 @@ const Main = () => {
   
 
   return (
-    <div className=" w-full h-full flex flex-col gap-5 mx-auto ">
+    <div className=" w-full h-full flex flex-col gap-5 mx-auto mx-28  ">
       <h1 className=" text-blue-900 text-2xl font-bold py-1">Global Dashboard</h1>
       <div className="flex justify-between items-stretch py-2  ">
         <div className="shadow-xl flex">

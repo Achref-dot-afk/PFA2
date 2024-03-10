@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
 
-//verify token for logging
 
 function verifyToken(req,res,next){
     const authToken=req.headers.authorization;
     if(authToken){
         const token=authToken.split(" ")[1];
         try{
-            const decodedPeyload=jwt.verify(token,process.env.JWT_SECRET);
-            req.user=decodedPeyload;  //req.user is an object wich contain the decoded payload
+            const decodedPayload=jwt.verify(token,process.env.JWT_SECRET);
+            req.user=decodedPayload;  
+            console.log(decodedPayload)
             next();
         }catch(err){
             res.status(401).send("invalid token, Access denied");

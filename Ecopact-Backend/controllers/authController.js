@@ -49,7 +49,11 @@ const userSignIn = asyncHandler(async(req,res)=>{
         isAdmin: user.isAdmin,
         token: token,
         firstName:user.firstName,
-        lastName:user.lastName
+        lastName:user.lastName,
+        email: user.email,
+        profilePhoto: user.profilePhoto,
+        phoneNumber: user.phoneNumber,
+        isAccountVerified: user.isAccountVerified
      })
 
 })

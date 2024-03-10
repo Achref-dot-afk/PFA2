@@ -1,11 +1,12 @@
 import { Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { getAllUsers } from '../../apiCalls/userApiCall';
+import { getAllUsers,getOneUser } from '../../apiCalls/userApiCall';
+import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
-
-  useEffect(() => {
+    useEffect(() => {
     getAllUsers()
       .then((res) => {
         setUsers(res.data.users);
@@ -39,13 +40,19 @@ const AdminDashboard = () => {
                 <Table.Cell>
                   <div className='flex justify-around '>
                     <p className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                      <Link to={`/users/details/${user._id}`}>
                       View
+                      </Link>
                     </p>
                     <p className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                    <Link to={`/users/edit/${user._id}`}>
                       Edit
+                    </Link>
                     </p>
                     <p className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                    <Link to={`/users/delete/${user._id}`}>
                       Delete
+                    </Link>
                     </p>
                   </div>
                 </Table.Cell>

@@ -61,7 +61,7 @@ const TopBar = ({mailToggled,setMailToggled,alertToggled,setAlertToggled}) => {
             alt="profile"
             className={` w-9  my-2 h-9 rounded-full`}
           />
-          <p>user name</p>
+          {user&&<p className='font-semibold '>{user.firstName} {user.lastName}</p>}
         </div>
       </div>
     </div>
