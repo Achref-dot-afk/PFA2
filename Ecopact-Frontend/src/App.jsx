@@ -26,10 +26,10 @@ function App() {
         <Route path='/Register' element={ <Register/>} />
         <Route path='/Login' element={!user ? <Login/> : <Navigate to="/Dashboard" /> }/>
         <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/Dashboard' element={<Dashboard/>} ></Route>
-        <Route path={`/users/details/:id`} element={<ShowUser/>} ></Route>
-        <Route path={`/users/delete/:id`} element={<DeleteUser/>} ></Route>
-        <Route path={`/users/edit/:id`} element={<UpdateUser/>} ></Route>
+        <Route path='/Dashboard' element={user ? <Dashboard/> : <Home/>} ></Route>
+        <Route path={`/users/details/:id`} element={user ? <ShowUser/> : <Home/> } ></Route>
+        <Route path={`/users/delete/:id`} element={user ? <DeleteUser/> : <Home/> } ></Route>
+        <Route path={`/users/edit/:id`} element={user ? <UpdateUser/> : <Home/> } ></Route>
         
       </Routes>
       </>

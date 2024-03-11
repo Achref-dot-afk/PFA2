@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { authActions } from '../slices/authSlice';
 
-const TopBar = ({mailToggled,setMailToggled,alertToggled,setAlertToggled}) => {
+const TopBar = ({mailToggled,setMailToggled,alertToggled,setAlertToggled}) => {  
   const toggleMail=()=>{
     if(alertToggled){
       setAlertToggled(!alertToggled);

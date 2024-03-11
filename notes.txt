@@ -1,3 +1,2 @@
-complete crud user(update user)
-complete crud interfaces(update user && show user)
-redux for collapce state
+complete crud interfaces(show user)
+Nodemailer

@@ -5,9 +5,11 @@ import { useForm} from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { UpdateUser } from '../apiCalls/userApiCall';
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function UpdateForm() {
+  const navigate = useNavigate();
   const user = useSelector(state=>state.auth.user);
   const { id } = useParams();
   const { register, handleSubmit } = useForm();

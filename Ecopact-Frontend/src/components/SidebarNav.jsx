@@ -20,7 +20,7 @@ import { MdContactSupport } from "react-icons/md";
 import Logo from "../assets/logo.jpeg";
 import Profile from "../assets/profile.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const SidebarNav = ({
@@ -28,6 +28,7 @@ export const SidebarNav = ({
 }) => {
   const { collapseSidebar } = useProSidebar();
   const LoggedUser=useSelector(state=>state.auth.user);
+  const {id}=useParams();
   const navigateToMainDashboard = () => {
     setDashboard({
       mainDashboard: true,
@@ -88,6 +89,10 @@ export const SidebarNav = ({
       PxOyPredictionDashboard: false,
     });
   };
+  const navigateToUpdatePage = () =>{
+    navigate(`/users/edit/${LoggedUser.id}`);
+  }
+  const navigate=useNavigate();
   return (
     <div id="sidebar" style={({ height: "100vh" }, { display: "flex" })}>
       <Sidebar backgroundColor="rgb(16 22 36)">
@@ -106,10 +111,10 @@ export const SidebarNav = ({
             
           
           </MenuItem >
-          <MenuItem className="text-white bg-blue-900" id="item" icon={<IoSettings className="text-xl"/>}>Update Profile</MenuItem>
+          <MenuItem onClick={navigateToUpdatePage} className="text-white bg-blue-900" id="item" icon={<IoSettings className="text-xl"/> }>Update Profile</MenuItem>
             
 
-          {!LoggedUser?.isAdmin&&<MenuItem onClick={navigateToAdminDashboard} id="item" className="text-white" icon={<FaTableList />}>Admin Dashboard</MenuItem>}
+          {LoggedUser?.isAdmin&&<MenuItem onClick={navigateToAdminDashboard} id="item" className="text-white" icon={<FaTableList />}>Admin Dashboard</MenuItem>}
           <MenuItem onClick={navigateToMainDashboard} id="item" className="text-white" icon={<FaTableList />}>Main Dashboard</MenuItem>
           <SubMenu id="item" className="text-white" icon={<ImStatsDots />} label="Historical rates">
                   <MenuItem onClick={navigateToNH4HistoryDashboard} className="sub bg-blue-950" icon={<IoAnalyticsOutline/>}>NH4HistoryRates</MenuItem>
